@@ -15,8 +15,8 @@ def banner(title, author):
     print("=" * banner_length )
     print("")
 
-banner("Custom Banner", "Maker")
-
-name = input("what is your name?")
-title = input("what is your quest?")
-banner(Quest,name)
+if __name__ == "__ main__":
+    banner("Custom Banner", "Maker")
+    name = input("what is your name?")
+    title = input("what is your quest?")
+    banner(Quest,name)
