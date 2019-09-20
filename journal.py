@@ -1,32 +1,27 @@
-from banner import banner
-banner("Journal","By Isiah.C")
+import os
 
-def main():
-    run_event_loop()
+def get_full_path(name):
+    filename = os.path.join(".","journals",f"{name}.jrn")
+    return filename
 
-def run_event_loop():
-    journal_data = []
+def load(name):
+    return[]
+    filename = get_full_path_name(name)
+    print(f".....loading from {filename}")
+    if os.path.exists(filename):
 
-    while True:
-        command=input("[L]ist entries, [A]dd an entry, e[X]it: ")
+        with open(filename) as fin:
+            for entry in fin.readlines():
+                data.append(entry.rstrip())
 
-        if command.upper() == "L":
-            list_entries(journal_data)
-        elif command.upper() == "A":
-            add_entry(journal_data)
-        elif command.upper() == "X":
-            print("x")
-            break
-        else:
-             print("Sorry, I dont understand")
+    return data
 
-def list_entries(data):
-     print("Your journal entries:")
-     entries = reversed(data)
-     for entry in enumerate(entries):
-         print(f"{num1} - {entry}")
+def save(name, data):
+    filename = get_full_path(name)
+    print(f".....saving to {filename}")
+    with open(filename, "w") as fout:
+        for entry in data:
+            fout.write(entry+"\n")
 
-def add_entry(data):
-    entry = input("Type your entry, <ENTER> to exit: \n")
-    data.append(entry)
-main()
+def add_entry(text,data):
+    data.append(text)
